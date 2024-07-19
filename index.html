@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Component</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .unread::after {
+            content: '\2022';
+            color: red;
+            font-size: 1.5rem;
+            /* margin-left: 0.5rem; */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white shadow-md rounded-lg p-8 max-w-lg w-full">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-lg font-bold">Notifications <span id="unread-count"
+                    class="bg-blue-600 text-white rounded-full px-2 py-1 text-sm">3</span></h2>
+            <a href="#" id="mark-all-read" class="text-gray-600 text-sm hover:text-gray-900">Mark all as read</a>
+        </div>
+        <ul id="notification-list" class="space-y-4">
+            <li class="notification-item bg-blue-50 p-4 rounded-lg flex items-center unread">
+                <img src="./images/avatar-mark-webber.webp" alt="Mark Webber" class="w-10 h-10 rounded-full mr-4">
+                <div>
+                    <p class="text-sm"><strong>Mark Webber</strong> reacted to your recent post <a href="#"
+                            class="text-blue-600 font-bold">My first tournament today!</a></p>
+                    <span class="text-xs text-gray-500">1m ago</span>
+                </div>
+            </li>
+            <li class="notification-item bg-blue-50 p-4 rounded-lg flex items-center unread">
+                <img src="./images/avatar-angela-gray.webp" alt="Angela Gray" class="w-10 h-10 rounded-full mr-4">
+                <div>
+                    <p class="text-sm"><strong>Angela Gray</strong> followed you</p>
+                    <span class="text-xs text-gray-500">5m ago</span>
+                </div>
+            </li>
+            <li class="notification-item bg-blue-50 p-4 rounded-lg flex items-center unread">
+                <img src="./images/avatar-jacob-thompson.webp" alt="Jacob Thompson" class="w-10 h-10 rounded-full mr-4">
+                <div>
+                    <p class="text-sm"><strong>Jacob Thompson</strong> has joined your group <a href="#"
+                            class="text-blue-600 font-bold">Chess Club</a></p>
+                    <span class="text-xs text-gray-500">1 day ago</span>
+                </div>
+            </li>
+            <li class="notification-item p-4 rounded-lg flex items-start">
+                <img src="./images/avatar-rizky-hasanuddin.webp" alt="Rizky Hasanuddin"
+                    class="w-10 h-10 rounded-full mr-4">
+                <div>
+                    <p class="text-sm"><strong>Rizky Hasanuddin</strong> sent you a private message</p>
+                    <span class="text-xs text-gray-500">5 days ago</span>
+                    <div class="bg-gray-100 p-2 mt-2 rounded-lg text-sm">
+                        Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm
+                        already having lots of fun and improving my game.
+                    </div>
+                </div>
+            </li>
+            <li class="notification-item p-4 rounded-lg flex items-center">
+                <img src="./images/avatar-kimberly-smith.webp" alt="Kimberly Smith" class="w-10 h-10 rounded-full mr-4">
+                <div>
+                    <p class="text-sm"><strong>Kimberly Smith</strong> commented on your picture</p>
+                    <span class="text-xs text-gray-500">1 week ago</span>
+                </div>
+            </li>
+            <li class="notification-item p-4 rounded-lg flex items-center">
+                <img src="./images/avatar-nathan-peterson.webp" alt="Nathan Peterson"
+                    class="w-10 h-10 rounded-full mr-4">
+                <div>
+                    <p class="text-sm"><strong>Nathan Peterson</strong> reacted to your recent post <a href="#"
+                            class="text-blue-600 font-bold">5 end-game strategies to increase your win rate</a></p>
+                    <span class="text-xs text-gray-500">2 weeks ago</span>
+                </div>
+            </li>
+            <li class="notification-item p-4 rounded-lg flex items-center">
+                <img src="./images/avatar-anna-kim.webp" alt="Anna Kim" class="w-10 h-10 rounded-full mr-4">
+                <div>
+                    <p class="text-sm"><strong>Anna Kim</strong> left the group <a href="#"
+                            class="text-blue-600 font-bold">Chess Club</a></p>
+                    <span class="text-xs text-gray-500">2 weeks ago</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const markAllReadBtn = document.getElementById('mark-all-read');
+            const notificationList = document.getElementById('notification-list');
+            const unreadCountEl = document.getElementById('unread-count');
+
+            markAllReadBtn.addEventListener('click', () => {
+                const unreadNotifications = notificationList.querySelectorAll('.unread');
+                unreadNotifications.forEach(notification => {
+                    notification.classList.remove('unread', 'bg-blue-50');
+                });
+                unreadCountEl.textContent = '0';
+            });
+        });
+    </script>
+
+</body>
+
+</html>
